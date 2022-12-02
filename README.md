@@ -118,7 +118,13 @@ Make sure all dev dependencies are installed
 npm i
 ```
 
-To run a test use the following command:
+We did not include the reference images into this git repository. To create a set of reference images run the following command:
+
+```
+npx backstop reference --config=./tests/visual-regression/local.test.config.js
+```
+
+Once we have a reference run a test with the following command:
 ```
 npx backstop test --config=./tests/visual-regression/local.test.config.js
 ```

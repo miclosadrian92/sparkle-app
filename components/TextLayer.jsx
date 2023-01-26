@@ -17,7 +17,7 @@ const isMenu = obj => {
   return obj?._model.title === "Panel Menu";
 };
 
-export default function TextLayer({ data, activeMenuItem }) {
+export default function TextLayer({ data, activeMenuItem, path }) {
   return (
     <div className={"textLayer"} id={data?.id}>
       {data?.column?.length ? (
@@ -37,7 +37,8 @@ export default function TextLayer({ data, activeMenuItem }) {
         {data?.leftBox?.map((item, index) => {
           const MatchingComponent = textItemLookup[item.type] || "p";
           return (
-            <MatchingComponent key={index} className={`${item.type} ${item?.styles?.join(" ")}`} id={item.id}>
+            <MatchingComponent key={index} className={`${item.type} ${item?.styles?.join(" ")}`} id={item.id}
+                               itemScope itemID={"urn:aem:" + item._path + "/jcr:content/data/master"} itemProp="content" itemType="text" >
               {item.content?.plaintext}
             </MatchingComponent>
           );

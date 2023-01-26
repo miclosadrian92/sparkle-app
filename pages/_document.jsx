@@ -21,11 +21,14 @@ export default function Document() {
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="true" />
         <link rel="stylesheet" href="https://use.typekit.net/bud6jdy.css" />
 
+        <meta name="urn:auecon:aem" content="aem:https://author-p15902-e147393-cmstg.adobeaemcloud.com" />
+
         <Script id="dataFetchScript" type="module" src="/dataFetch.js" strategy="beforeInteractive" />
       </Head>
       <body>
         <Main />
         <NextScript />
+        <script src="https://maximilian.voss.rocks/universal-editor-cors.js" async></script>
       </body>
     </Html>
   );

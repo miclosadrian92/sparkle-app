@@ -27,6 +27,8 @@ export default function Background({ backgroundProps, lazy, host, viewType }) {
           src={source}
           alt={altText || "Panel Background"}
           className="backgroundImage"
+          itemID={"urn:aem:" + source + "/jcr:content/jcr:content/metadata"}
+          itemType="image"
           loading={lazy ? "lazy" : "eager"}
         />
       )}

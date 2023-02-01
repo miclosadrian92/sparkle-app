@@ -27,19 +27,25 @@ export default function PointTextMap({ data }) {
         {data?.content?.map((item, index) => {
           return (
             <div
-              key={index}
-              className="pointTextItemWrapper"
-              id={item.id}
-              style={{
+                key={index}
+                className="pointTextItemWrapper"
+                id={item.id}
+                style={{
                 left: `calc(${item.x}% + 50%)`,
                 top: `calc(${item.y}% + 50%)`,
               }}
+                itemScope
+                itemID={`urn:aem:${item._path}/jcr:content/data/master`}
+                itemType="reference"
+                itemfilter="cf"
             >
               <div className="textWrapper">
                 <div className="buyText">
-                  <a href={item.link || window.location.href}>Buy for {item.pricetag}</a>
+                  <a href={item.link || window.location.href}>
+                    Buy for {item.pricetag}
+                  </a>
                 </div>
-                <div className="text">{item.text}</div>
+                <div className="text" itemProp="text" itemType="text">{item.text}</div>
                 <div className="arrow" />
               </div>
               <div className="dot" />

@@ -1,6 +1,6 @@
 import { scrollToId } from "./utils";
 
-export default function Menu({ menuItems, activeMenuItem }) {
+export default function Menu({ itemtype, itemprop, menuItems, activeMenuItem }) {
   const onClickHandler = link => {
     if (link) {
       scrollToId(link);
@@ -16,12 +16,16 @@ export default function Menu({ menuItems, activeMenuItem }) {
         {menuItems.map((item, index) => {
           return (
             <li
-              key={index}
-              onClick={() => onClickHandler(item?.link)}
-              className={`menuListItem ${activeMenuItem === item.menuItemId ? "active" : ""}`}
-              id={"menuItem-" + item.menuItemId}
+                itemScope
+                itemID={`urn:aem:${item._path}/jcr:content/data/master`}
+                itemType="reference"
+                itemfilter="cf"
+                key={index}
+                onClick={() => onClickHandler(item?.link)}
+                className={`menuListItem ${activeMenuItem === item.menuItemId ? "active" : ""}`}
+                id={"menuItem-" + item.menuItemId}
             >
-              {item.text}
+              <span itemType="text" itemProp="text">{item.text}</span>
             </li>
           );
         })}

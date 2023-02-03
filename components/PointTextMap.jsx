@@ -34,10 +34,6 @@ export default function PointTextMap({ data }) {
                 left: `calc(${item.x}% + 50%)`,
                 top: `calc(${item.y}% + 50%)`,
               }}
-                itemScope
-                itemID={`urn:aem:${item._path}/jcr:content/data/master`}
-                itemType="reference"
-                itemfilter="cf"
             >
               <div className="textWrapper">
                 <div className="buyText">
@@ -45,7 +41,13 @@ export default function PointTextMap({ data }) {
                     Buy for {item.pricetag}
                   </a>
                 </div>
-                <div className="text" itemProp="text" itemType="text">{item.text}</div>
+                <div className="text"
+                     itemScope
+                     itemID={`urn:aem:${item._path}/jcr:content/data/master`}
+                     itemProp="text"
+                     itemType="text">
+                  {item.text}
+                </div>
                 <div className="arrow" />
               </div>
               <div className="dot" />

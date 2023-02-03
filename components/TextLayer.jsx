@@ -17,7 +17,7 @@ const isMenu = obj => {
     return obj?._model.title === "Panel Menu";
 };
 
-export default function TextLayer({data, activeMenuItem, path}) {
+export default function TextLayer({data, activeMenuItem}) {
     return (
         <div className={"textLayer"} id={data?.id}>
             {data?.column?.length ? (
@@ -25,17 +25,17 @@ export default function TextLayer({data, activeMenuItem, path}) {
                     {data?.column?.map((item, index) => {
                         const MatchingComponent = textItemLookup[item.type] || "p";
                         return (
-                            <div itemScope
-                                 itemID={`urn:aem:${item._path}/jcr:content/data/master`}
-                                 itemType="reference"
-                                 key={index}
+                            <MatchingComponent
+                                className={`${item.type} ${item?.styles?.join(" ")}`}
+                                key={index}
+                                id={item.id}
+                                itemScope
+                                itemID={`urn:aem:${item._path}/jcr:content/data/master`}
+                                itemProp="content"
+                                itemType="text"
                             >
-                                <MatchingComponent className={`${item.type} ${item?.styles?.join(" ")}`}
-                                                   id={item.id} itemProp="content" itemType="text">
-                                    {item.content?.plaintext}
-                                </MatchingComponent>
-                            </div>
-                        );
+                                {item.content?.plaintext}
+                            </MatchingComponent>);
                     })}
                 </div>
             ) : null}
@@ -44,10 +44,15 @@ export default function TextLayer({data, activeMenuItem, path}) {
                 {data?.leftBox?.map((item, index) => {
                     const MatchingComponent = textItemLookup[item.type] || "p";
                     return (
-                        <MatchingComponent key={index} className={`${item.type} ${item?.styles?.join(" ")}`}
-                                           id={item.id}
-                                           itemScope itemID={`urn:aem:${item._path}/jcr:content/data/master`}
-                                           itemProp="content" itemType="text">
+                        <MatchingComponent
+                            key={index}
+                            className={`${item.type} ${item?.styles?.join(" ")}`}
+                            id={item.id}
+                            itemScope
+                            itemID={`urn:aem:${item._path}/jcr:content/data/master`}
+                            itemProp="content"
+                            itemType="text"
+                        >
                             {item.content?.plaintext}
                         </MatchingComponent>
                     );

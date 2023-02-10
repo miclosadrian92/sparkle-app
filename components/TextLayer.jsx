@@ -17,7 +17,7 @@ const isMenu = obj => {
     return obj?._model.title === "Panel Menu";
 };
 
-export default function TextLayer({data, activeMenuItem}) {
+export default function TextLayer({data, activeMenuItem, panelNr}) {
     return (
         <div className={"textLayer"} id={data?.id}>
             {data?.column?.length ? (
@@ -66,6 +66,7 @@ export default function TextLayer({data, activeMenuItem}) {
                         <MatchingComponent
                             menuItems={item.menuItems}
                             activeMenuItem={activeMenuItem}
+                            panelNr={panelNr}
                             key={index}
                             className={`${item.type} ${item?.styles?.join(" ")}`}
                             id={item.id}

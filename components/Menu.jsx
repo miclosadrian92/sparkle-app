@@ -1,7 +1,8 @@
 import { scrollToId } from "./utils";
 import { v4 as uuidv4 } from 'uuid';
+import { useMemo } from "react";
 
-export default function Menu({ menuItems, activeMenuItem }) {
+export default function Menu({ menuItems, activeMenuItem, panelNr }) {
   const onClickHandler = link => {
     if (link) {
       scrollToId(link);
@@ -16,17 +17,17 @@ export default function Menu({ menuItems, activeMenuItem }) {
       <ul className="menuList">
         {menuItems.map((item, index) => {
           const unique = uuidv4();
+          const editorReference = useMemo(() => panelNr === 0 && { itemID: `urn:aem:${item._path}/jcr:content/data/master`, itemType: "reference"}, [panelNr, item._path]);
+          const editorItem = useMemo(() => panelNr === 0 && { itemType: 'text', itemProp: 'text'}, [panelNr, item._path]);
           return (
             <li
-                itemScope
-                itemID={`urn:aem:${item._path}/jcr:content/data/master`}
-                itemType="reference"
+                itemScope {...editorReference}
                 key={unique + index}
                 onClick={() => onClickHandler(item?.link)}
                 className={`menuListItem ${activeMenuItem === item.menuItemId ? "active" : ""}`}
                 id={"menuItem-" + item.menuItemId + unique}
             >
-              <span itemType="text" itemProp="text">{item.text}</span>
+              <span {...editorItem}>{item.text}</span>
             </li>
           );
         })}

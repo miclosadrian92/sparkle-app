@@ -21,7 +21,7 @@ export default function Document() {
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="true" />
         <link rel="stylesheet" href="https://use.typekit.net/bud6jdy.css" />
 
-        <meta name="urn:auecon:aem" content="aem:https://author-p15902-e147393-cmstg.adobeaemcloud.com" />
+        <meta name="urn:auecon:aem" content="aem:https://author-p54352-e854610.adobeaemcloud.com" />
 
         <Script id="dataFetchScript" type="module" src="/dataFetch.js" strategy="beforeInteractive" />
       </Head>

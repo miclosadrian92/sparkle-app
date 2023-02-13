@@ -4,7 +4,7 @@ const fetchConfig = {
   // publishHost: "https://publish-p54352-e845472.adobeaemcloud.com",
   authorHost: " https://author-p54352-e854610.adobeaemcloud.com",
   fallbackHost: "https://publish-p81252-e700817.adobeaemcloud.com",
-  endpoint: "graphql/execute.json/sample-wknd-app/homepage",
+  endpoint: "graphql/execute.json/sample-wknd-app/vercel",
 };
 
 const searchParams = new URLSearchParams(window.location.search);

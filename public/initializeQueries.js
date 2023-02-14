@@ -2,9 +2,9 @@ const fetchConfig = {
   sparkle: "https://sparkle-data.vercel.app",
   // authorHost: "https://author-p54352-e845472.adobeaemcloud.com",
   // publishHost: "https://publish-p54352-e845472.adobeaemcloud.com",
-  authorHost: " https://author-p54352-e854610.adobeaemcloud.com",
+  authorHost: "https://author-p15902-e147393-cmstg.adobeaemcloud.com",
   fallbackHost: "https://publish-p81252-e700817.adobeaemcloud.com",
-  endpoint: "graphql/execute.json/sample-wknd-app/vercel",
+  endpoint: "graphql/execute.json/sample-wknd-app/homepage",
 };
 
 const searchParams = new URLSearchParams(window.location.search);
